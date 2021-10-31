@@ -18,12 +18,12 @@ import Api from '../../services/Api';
 import SignInput from '../../components/SignInput';
 import EmailIcon from '../../assets/email.svg';
 import LockIcon from '../../assets/lock.svg';
-import MainTab from '../../stacks/MainTab';
+
 const LoginScreen = ({ navigation, route }) => {
     const { dispatch: userDispatch } = useContext(UserContext);
     const [loading , setLoading] = useState(false);
-    const [emailField, setEmailField] = useState('');
-    const [passwordField, setPasswordField] = useState('');
+    const [emailField, setEmailField] = useState('25215344809');
+    const [passwordField, setPasswordField] = useState('@@Leo2021Sgc');
 
     
     

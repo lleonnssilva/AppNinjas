@@ -1,6 +1,6 @@
 
 import React, { useState, useContext } from 'react';
-import { useNavigation } from '@react-navigation/native';
+import { Image } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import {
     Container,
@@ -15,13 +15,12 @@ import {
 import InputLogin from '../../components/SignInput';
 import Api from '../../services/Api';
 import { UserContext } from '../../contexts/UserContext';
-import LogoBarbeiro from '../../assets/barber.svg';
 import IconePessoa from '../../assets/person.svg';
 import IconeEmail from '../../assets/email.svg';
 import IconeSenha from '../../assets/lock.svg';
 
-export default () => {
-    const navigation = useNavigation();
+const Registrar = ({ navigation, route }) => {
+
     const { dispatch: userDispatch } = useContext(UserContext);
 
     const [campoNome, setCampoNome] = useState('');
@@ -38,7 +37,6 @@ export default () => {
                 Perfil:"cliente"
             });
             await AsyncStorage.setItem('token', response.data.token);
-            await AsyncStorage.setItem('avatar', response.data.usuario.avatar);
             await AsyncStorage.setItem('usuarioId', `${response.data.usuario.id}`);
 
                 userDispatch({
@@ -65,9 +63,9 @@ export default () => {
 
     return (
         <Container>
-            <LogoBarbeiro width="100%" height="160" />
+           <Image style={{height: 200, width: 200, resizeMode:'contain'}} source={require('../../assets/governo_sp_preto.png')}/> 
 
-            <InputArea>
+             <InputArea>
                 <InputLogin
                     IconSvg={IconePessoa}
                     placeholder="Digite seu nome"
@@ -98,8 +96,10 @@ export default () => {
             <SignMessageButton onPress={handleMessageButtonClick}>
                 <SignMessageButtonText>Já possui uma conta?</SignMessageButtonText>
                 <SignMessageButtonTextBold>Faça Login</SignMessageButtonTextBold>
-            </SignMessageButton>
+            </SignMessageButton> 
 
         </Container>
     );
 }
+
+export default Registrar;

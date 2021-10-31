@@ -50,3 +50,20 @@ export const Area = styled.TouchableOpacity`
     border-color:#000000;
 
 `;
+export const BotaoFechar = styled.TouchableOpacity`
+width: 90px;
+height: 40px;
+background-color: #000000;
+border: 1px solid #999999;
+border-radius: 20px;
+justify-content: center;
+align-items: center;
+margin-top: 20px;
+margin-left: 20px;
+margin-right :20px;
+`;
+export const BotaoFecharText  = styled.Text`
+font-size: 13px;
+color: #ffffff;
+
+`

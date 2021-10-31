@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from "react";
 import {YellowBox,View,StyleSheet,Modal,Text,Pressable,Dimensions} from 'react-native';
-import { Platform, RefreshControl,Image } from 'react-native';
+import { RefreshControl,Image } from 'react-native';
 import Api from '../../../services/Api';
 import AsyncStorage from '@react-native-community/async-storage';
 import BackIcon from '../../../assets/back.svg';
@@ -35,9 +35,6 @@ const styles = StyleSheet.create({
     buttonOpen: {
       backgroundColor: "#000000",
     },
-    buttonClose: {
-      backgroundColor: "#2196F3",
-    },
     textStyle: {
       color: "white",
       fontWeight: "bold",
@@ -46,6 +43,20 @@ const styles = StyleSheet.create({
     modalText: {
       marginBottom: 15,
       textAlign: "center"
+    },
+    botaoFechar:{
+      width: 90,
+      height: 40,
+      color: '#ffffff',
+      border: 1 ,
+      borderColor:'#999999',
+      borderRadius: 20,
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginTop: 20,
+      marginLeft: 20,
+      marginRight :20,
+      backgroundColor: "#000000",
     }
   });
 import {
@@ -57,7 +68,9 @@ import {
     Area,
     InfoArea,
     NomeUsuario,
-    TituloCurso
+    TituloCurso,
+    BotaoFechar,
+    BotaoFecharText
 } from './styles';
 
 
@@ -67,6 +80,7 @@ const Inscricao = ({ navigation, route }) => {
     const [refreshing, setRefreshing] = useState(false);
     const [modalDetalheVisible, setModalDetalheVisible] = useState(false);
     const [detalheIncricao, setDetalheIncricao] = useState();
+
     const listarInscricoes = async () => {
         setCursoqualificacao(cursoqualificacao => [] );
         let userid = await AsyncStorage.getItem('usuarioId');
@@ -80,6 +94,7 @@ const Inscricao = ({ navigation, route }) => {
 
         setLoading(false);
     }
+    
     const getInscricao = async (item) => {
       setLoading(true);
       var res = await Api.get(`inscricao/${item}`);
@@ -89,11 +104,13 @@ const Inscricao = ({ navigation, route }) => {
     
         setModalDetalheVisible(true);
      
-  }
-  useEffect(()=>{
-    setCursoqualificacao(cursoqualificacao => [] );
-    listarInscricoes();
-}, []);
+    }
+
+    useEffect(()=>{
+      setCursoqualificacao(cursoqualificacao => [] );
+      listarInscricoes();
+    }, []);
+
     const onRefresh = () => {
         setRefreshing(false);
         listarInscricoes();
@@ -104,6 +121,7 @@ const Inscricao = ({ navigation, route }) => {
       getInscricao(key);
 
     }
+    
     const handelBackButtom =  () =>{
       navigation.reset({
         routes: [{name: 'MainTab'}]
@@ -160,11 +178,15 @@ const Inscricao = ({ navigation, route }) => {
             <Text>Período: {detalheIncricao.turmaPrincipal.periodo}</Text>
             <Text>Quantidade Alunos {detalheIncricao.turmaPrincipal.quantidadeAluno}</Text>
             <Pressable
-              style={[styles.button, styles.buttonClose]}
+              style={[styles.botaoFechar, styles.buttonClose]}
               onPress={() => setModalDetalheVisible(!modalDetalheVisible)}
             >
-            <Text>Fechar</Text>
+            <Text style={{color:"#ffffff"}}>Fechar</Text>
             </Pressable>
+
+            {/* <BotaoFechar onPress={() => setModalDetalheVisible(!modalDetalheVisible)}> 
+                    <BotaoFecharText>Fechar</BotaoFecharText>
+            </BotaoFechar> */}
           </View>
         </View>
       </Modal>}

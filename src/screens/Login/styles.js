@@ -13,15 +13,15 @@ export const InputArea = styled.View`
 `;
 
 export const CustomButton = styled.TouchableOpacity`
-    height: 60px;
+    height: 40px;
     background-color: green;
     border-radius: 10px;
     justify-content: center;
     align-items: center;
-    width:100px;
+    width:80px;
 `;
 export const CustomButtonText = styled.Text`
-    font-size: 18px;
+    font-size: 15px;
     color: #FFFFFF;
 `;
 

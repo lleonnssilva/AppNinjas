@@ -1,26 +1,20 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import { useNavigation , useRoute} from '@react-navigation/native';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import Api from '../../services/Api';
 
-
 import { 
     Container,
-    UsuarioAvatar,
     UsuarioInfoNome,
     BotaoSair,
     BotaoSairText,
     UsuarioInfo
 
 } from './styles';
-
-
-
-
-
+import  useLocation  from '../../components/Localizacao';
 
 export default () => {
     const navigation = useNavigation();
@@ -30,8 +24,8 @@ export default () => {
     const [loading , setLoading] = useState(false);
     const [pefilInfo , setpefilInfo] = useState({});
 
+    const { coords, errorMsg } = useLocation();	
     useEffect(()=>{
-
     const pegarInfoPerfil = async () =>{
         setLoading(true);
         let userid = await AsyncStorage.getItem('usuarioId');
@@ -47,7 +41,7 @@ export default () => {
     pegarInfoPerfil();
     },[]);
     
-
+   
     const handleLogoutClick = async () => {
         
          await AsyncStorage.removeItem('token');
@@ -69,12 +63,19 @@ export default () => {
                  <UsuarioInfoNome>UserName: {usuarioInfo.userName}</UsuarioInfoNome>
                  <UsuarioInfoNome>Email: {usuarioInfo.email}</UsuarioInfoNome>
                  <UsuarioInfoNome>Perfil: {pefilInfo.nomeExibicao}</UsuarioInfoNome> 
+                 <UsuarioInfoNome>Localização</UsuarioInfoNome> 
+                 {coords &&
+                 <View>
+                    <UsuarioInfoNome>Latitude: {coords.latitude}</UsuarioInfoNome> 
+                    <UsuarioInfoNome>Longitude: {coords.longitude}</UsuarioInfoNome> 
+                </View>
+                }
                 
+                 
                  <BotaoSair onPress={handleLogoutClick}> 
                     <BotaoSairText>Sair</BotaoSairText>
                  </BotaoSair>
                  </UsuarioInfo>
-                
         </Container>
     );
 }
