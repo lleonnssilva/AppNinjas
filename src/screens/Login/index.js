@@ -70,10 +70,7 @@ const LoginScreen = ({ navigation, route }) => {
     }
     return (
         <Container>  
-             <Image
-                source={require('../../assets/39821_ninja_icon.png')}
-                resizeMode={'contain'}
-                style={{height: 25, width: 25,}}/>
+            
             <Image style={{height: 200, width: 200, resizeMode:'contain'}} source={require('../../assets/governo_sp_preto.png')}/>
             <CustomTextConta>ACESSE SUA CONTA</CustomTextConta>
             <InputArea>

@@ -64,10 +64,7 @@ export default () => {
         <Container>
                 
                 <UsuarioInfo> 
-                <Image
-                source={require('../../assets/39821_ninja_icon.png')}
-                resizeMode={'contain'}
-                style={{height: 25, width: 25,}}/>
+            
                  <BotaoSair onPress={handleLogoutClick}> 
                     <BotaoSairText>Sair</BotaoSairText>
                  </BotaoSair>
