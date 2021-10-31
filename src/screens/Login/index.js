@@ -2,6 +2,7 @@ import React, { useState, useContext,useEffect } from 'react';
 import { Image } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import { UserContext } from '../../contexts/UserContext';
+
 import {
     Container,
     InputArea,
@@ -29,6 +30,8 @@ const LoginScreen = ({ navigation, route }) => {
     
     const handleSignClick = async () => {
             try {
+              
+
                 if(emailField != '' && passwordField != '') {
                     setLoading(true);
                     const response =  await Api.post('usuario/Authentication', {
@@ -36,8 +39,7 @@ const LoginScreen = ({ navigation, route }) => {
                         password:passwordField
                     });
                     const token = await AsyncStorage.getItem('token');
-                    console.log('----login---',token,'-----login----') 
-    
+
                     var jwtDecode = require('jwt-decode');
                     let jwtClaims = jwtDecode(response.data.token);
     
@@ -68,6 +70,10 @@ const LoginScreen = ({ navigation, route }) => {
     }
     return (
         <Container>  
+             <Image
+                source={require('../../assets/39821_ninja_icon.png')}
+                resizeMode={'contain'}
+                style={{height: 25, width: 25,}}/>
             <Image style={{height: 200, width: 200, resizeMode:'contain'}} source={require('../../assets/governo_sp_preto.png')}/>
             <CustomTextConta>ACESSE SUA CONTA</CustomTextConta>
             <InputArea>

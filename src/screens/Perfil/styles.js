@@ -84,8 +84,6 @@ export const BotaoFavorito  = styled.TouchableOpacity`
 
 export const UsuarioInfo  = styled.View`
     flex:1;
-    
-    margin-top: 20px;
     margin-left: 20px;
     margin-right :20px; 
     height:100px;
