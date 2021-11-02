@@ -1,8 +1,6 @@
 import React, { useState, useContext,useEffect } from 'react';
 import { Image } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
-import { UserContext } from '../../contexts/UserContext';
-
 import {
     Container,
     InputArea,
@@ -21,46 +19,35 @@ import EmailIcon from '../../assets/email.svg';
 import LockIcon from '../../assets/lock.svg';
 
 const LoginScreen = ({ navigation, route }) => {
-    const { dispatch: userDispatch } = useContext(UserContext);
-    const [loading , setLoading] = useState(false);
     const [emailField, setEmailField] = useState('25215344809');
     const [passwordField, setPasswordField] = useState('@@Leo2021Sgc');
 
-    
-    
     const handleSignClick = async () => {
             try {
-              
-
-                if(emailField != '' && passwordField != '') {
-                    setLoading(true);
-                    const response =  await Api.post('usuario/Authentication', {
-                        userNameOrEmail:emailField, 
-                        password:passwordField
-                    });
-                    const token = await AsyncStorage.getItem('token');
-
-                    var jwtDecode = require('jwt-decode');
-                    let jwtClaims = jwtDecode(response.data.token);
-    
-                    let usuarioId = jwtClaims['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/sid'];
-                    
-                    await AsyncStorage.setItem('token', response.data.token);
-                    await AsyncStorage.setItem('usuarioId', usuarioId);
-    
-                    if(response.data.token){
-                       navigation.reset({
-                        routes:[{name:'MainTab'}]
-                       });
-                    }  
-            } else {
-                    alert("Preencha os campos!");
+             if(emailField != '' && passwordField != '') {
+                   
+                        const response = await  Api.login(emailField,passwordField)
+                        if(response.token){
+                            var jwtDecode = require('jwt-decode');
+                            let jwtClaims = jwtDecode(response.token);
+            
+                            let usuarioId = jwtClaims['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/sid'];
+                            
+                            await AsyncStorage.setItem('token', response.token);
+                            await AsyncStorage.setItem('usuarioId', usuarioId);
+                            navigation.reset({
+                                routes:[{name:'MainTab'}]
+                            });
+                        }
+                        if(response.errors)
+                            alert(`Mensagem: ${response.message} \nCódigo: ${response.code} \nErro: ${response.errors}`);
+                        }     
+             else {
+                       alert("Preencha os campos!");
             }
             } catch (error) {
                 alert(error);
             }
-
-
     }
 
     const handleMessageButtonClick = () => {

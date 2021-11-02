@@ -30,12 +30,11 @@ const Registrar = ({ navigation, route }) => {
     const handleSignClick = async () => {
         if(campoNome != '' && campoEmail != '' && campoSenha != '') {
           
-            const response = await Api.post('account/registrar', {
-                Nome: campoNome, 
-                Email: campoEmail, 
-                Senha: campoSenha,
-                Perfil:"cliente"
-            });
+            const response = await Api.registrar(campoNome, 
+                Email, 
+                Senha,
+                Perfil
+            );
             await AsyncStorage.setItem('token', response.data.token);
             await AsyncStorage.setItem('usuarioId', `${response.data.usuario.id}`);
 

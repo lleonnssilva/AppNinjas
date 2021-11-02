@@ -4,6 +4,8 @@ import AsyncStorage from '@react-native-community/async-storage';
 import { useNavigation , useRoute} from '@react-navigation/native';
 import Api from '../../services/Api';
 import MapboxGL from "@react-native-mapbox-gl/maps";
+import envs from '../../config/env'
+
 
 
 import { 
@@ -24,7 +26,8 @@ export default () => {
     const [pefilInfo , setpefilInfo] = useState({});
     const [coordernada , setCoordernada] = useState();
     const { coords, errorMsg } = useLocation();	
-    MapboxGL.setAccessToken("sk.eyJ1IjoibGVvYW5yZG8iLCJhIjoiY2t2ZmlmZ3E4MTV0NTJvcWZ5cHQ5c3h2MSJ9.9Kzr0B0gFKgx9gMrLafa_w");
+    const {TOKEN_MAP_URL}  = envs;
+    MapboxGL.setAccessToken(TOKEN_MAP_URL);
     useEffect(()=>{
        
         if(coords){
@@ -34,18 +37,14 @@ export default () => {
     },[coords]);
     
     useEffect(()=>{
-               const pegarInfoPerfil = async () =>{
+        const pegarInfoPerfil = async () =>{
         setLoading(true);
-        let userid = await AsyncStorage.getItem('usuarioId');
-        let response = await Api.get('usuario/'+ userid);
-
-        if(response.data){
-            setUsuarioInfo(response.data);   
-            setpefilInfo(response.data.perfil);
+        let response = await Api.pegarInfoPerfil();
+        if(response){
+            setUsuarioInfo(response);   
+            setpefilInfo(response.perfil);
             setLoading(false);
         }
-        
-       
     }
     pegarInfoPerfil();
     },[]);

@@ -1,5 +1,3 @@
 http://www2.decom.ufop.br/terralab/como-publicar-um-aplicativo-feito-em-react-native-na-play-store/
 https://www.youtube.com/watch?v=Xk28gXHQ9Bc
 https://www.youtube.com/watch?v=IJ-lv7TGC4k
-
-sk.eyJ1IjoibGVvYW5yZG8iLCJhIjoiY2t2ZmlmZ3E4MTV0NTJvcWZ5cHQ5c3h2MSJ9.9Kzr0B0gFKgx9gMrLafa_w

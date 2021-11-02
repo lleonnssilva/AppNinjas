@@ -5,6 +5,9 @@ import UserContextProvider from './src/contexts/UserContext';
 import MainStack from './src/navigation/StackNavigator';
 import {YellowBox,View,StyleSheet,Modal,Text,Pressable} from 'react-native';
 import OneSignal from 'react-native-onesignal';
+import envs from './src/config/env'
+
+
 const styles = StyleSheet.create({
   centeredView: {
     flex: 1,
@@ -48,13 +51,18 @@ const styles = StyleSheet.create({
 });
 
 function App() {
+
+  
   console.ignoredYellowBox = ['Warning: Each', 'Warning: Failed'];
   console.disableYellowBox = true;
   const [modalVisible, setModalVisible] = useState(false);
   const [modalNotificacao, setModalNotificacao] = useState('Olá aluno, estão abertas as inscrições para os cursos Univesp. São mais de 10 cursos para você se inscrever e receber um auxílio do governo.');
+  const {TOKEN_ONSIGNAL_URL}  = envs;
+
   useEffect(() => {
+
     OneSignal.setLogLevel(6, 0);
-    OneSignal.init('80277e05-4e83-454a-a14a-06e6561aa54e');
+    OneSignal.init(TOKEN_ONSIGNAL_URL);
     OneSignal.addEventListener('opened', onOpened);
 
     return ()=> OneSignal.removeEventListener('opened',onOpened);

@@ -83,22 +83,21 @@ const Inscricao = ({ navigation, route }) => {
 
     const listarInscricoes = async () => {
         setCursoqualificacao(cursoqualificacao => [] );
-        let userid = await AsyncStorage.getItem('usuarioId');
-        var response = await Api.get(`inscricao/usuario/${userid}`);
-       
-        for (var i = 0; i < response.data.length; i++) {
-            var res = await Api.get(`inscricao/${response.data[i].id}`);
-            setCursoqualificacao(cursoqualificacao => [...cursoqualificacao,res.data] );
-            console.log(res.data);
-         }
 
+        var response = await Api.listarInscricoes();
+
+        for (var i = 0; i < response.length; i++) {
+            var res = await Api.pegarIncricao(response[i].id);
+            setCursoqualificacao(cursoqualificacao => [...cursoqualificacao,res] );
+            console.log(res);
+         }
         setLoading(false);
     }
     
     const getInscricao = async (item) => {
       setLoading(true);
-      var res = await Api.get(`inscricao/${item}`);
-      setDetalheIncricao(res.data );
+      var res = await  Api.pegarIncricao(item);
+      setDetalheIncricao(res );
       console.log('detalhe',item,'detalhe');
       setLoading(false);
     
