@@ -52,8 +52,14 @@ $ code .
 # Instale as dependências
 $ npm install ou yarn
 
+#Crie um arquivo .env
+DEV_BACKEND_URL = 'url da api'
+DEV_TOKEN_MAP_URL = 'token do Mapbox'
+DEV_TOKEN_ONSIGNAL_URL = 'token do Onsignal'
+
 # Execute a aplicação em emulador android
 $ npx react-native run-android
+
 
 ```
 
