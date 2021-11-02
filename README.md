@@ -16,8 +16,8 @@
 <img  src="/src/assets/Registrar.png" />
 <img  src="/src/assets/HomeInicial.png" />
 <img  src="/src/assets/Sistemas.png" />
-<img  src="/src/assets/ViaRapida_Inscri\303\247\303\243o.png" />
-<img  src="/src/assets/ViaRapida_Inscri\303\247\303\243o_detalhe.png" />
+<img  src="/src/assets/ViaRapida_Inscricao.png" />
+<img  src="/src/assets/ViaRapida_Inscricao_detalhe.png" />
 <img  src="/src/assets/Perfil.png" />
 <img  src="/src/assets/PushNotification1.png" />
 <img  src="/src/assets/PushNotification2.png" />
