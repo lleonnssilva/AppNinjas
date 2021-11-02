@@ -19,8 +19,8 @@ import EmailIcon from '../../assets/email.svg';
 import LockIcon from '../../assets/lock.svg';
 
 const LoginScreen = ({ navigation, route }) => {
-    const [emailField, setEmailField] = useState('25215344809');
-    const [passwordField, setPasswordField] = useState('@@Leo2021Sgc');
+    const [emailField, setEmailField] = useState('');
+    const [passwordField, setPasswordField] = useState('');
 
     const handleSignClick = async () => {
             try {
