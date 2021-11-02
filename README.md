@@ -11,7 +11,7 @@
 - [X] Popup de Push Notification.
 
 ### Telas
-
+<img  src="/src/assets/App.png" />
 <img  src="/src/assets/Login.png" />
 <img  src="/src/assets/Registrar.png" />
 <img  src="/src/assets/HomeInicial.png" />
