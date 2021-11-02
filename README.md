@@ -1,9 +1,5 @@
 # AppNinjas
 
-<h4 align="center"> 
-	🚧  React Select 🚀 Em construção...  🚧
-</h4>
-
 ### Features
 
 - [x] Login em Api Sgcp.
@@ -14,9 +10,27 @@
 - [X] Geolocalização e Mapas do aluno logado.
 - [X] Popup de Push Notification.
 
-<h1 align="center">
-  <img  src="/src/assets/Login.png" />
-</h1>
+### Telas
+
+<img  src="/src/assets/Login.png" />
+<img  src="/src/assets/Registrar.png" />
+<img  src="/src/assets/HomeInicial.png" />
+<img  src="/src/assets/Sistemas.png" />
+<img  src="/src/assets/ViaRapida_Inscri\303\247\303\243o.png" />
+<img  src="/src/assets/ViaRapida_Inscri\303\247\303\243o_detalhe.png" />
+<img  src="/src/assets/Perfil.png" />
+<img  src="/src/assets/PushNotification1.png" />
+<img  src="/src/assets/PushNotification2.png" />
+
+### 🛠 Tecnologias
+
+As seguintes ferramentas foram usadas na construção do projeto:
+
+- [React](https://pt-br.reactjs.org/)
+- [React Native](https://reactnative.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Onsignal](https://onesignal.com/)
+- [MapBox](https://www.mapbox.com/)
 
 ### Pré-requisitos
 
@@ -43,12 +57,3 @@ $ npx react-native run-android
 
 ```
 
-### 🛠 Tecnologias
-
-As seguintes ferramentas foram usadas na construção do projeto:
-
-- [React](https://pt-br.reactjs.org/)
-- [React Native](https://reactnative.dev/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Onsignal](https://onesignal.com/)
-- [MapBox](https://www.mapbox.com/)
