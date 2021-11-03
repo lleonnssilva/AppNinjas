@@ -12,6 +12,7 @@
 
 ### Telas
 <img  src="/src/assets/App.png" />
+<img  src="/src/assets/splash.png" />
 <img  src="/src/assets/Login.png" />
 <img  src="/src/assets/Registrar.png" />
 <img  src="/src/assets/HomeInicial.png" />
@@ -28,10 +29,12 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 - [React](https://pt-br.reactjs.org/)
 - [React Native](https://reactnative.dev/)
-- [TypeScript](https://www.typescriptlang.org/)
+- [JavaScript](https://262.ecma-international.org/6.0/)
+- [Firebase](https://console.firebase.google.com/)
 - [Onsignal](https://onesignal.com/)
 - [MapBox](https://www.mapbox.com/)
-
+- [Yarn](https://yarnpkg.com/)
+- [Android Studio](https://developer.android.com/)
 ### Pré-requisitos
 
 Antes de começar, você vai precisar configurar o seu ambiente de desenvolvimento:

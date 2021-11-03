@@ -1,12 +1,11 @@
 import AsyncStorage from '@react-native-community/async-storage';
+import envs from '../../src/config/env'
 
-
-const BASE_API = 'http://api.sgcp.sp.gov.br/api/v1/';
-
+const {BACKEND_URL} = envs;
 export default {
     
     checkToken: async (token) => {
-        const req = await fetch(`${BASE_API}/auth/refresh`, {
+        const req = await fetch(`${BACKEND_URL}/auth/refresh`, {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -18,7 +17,7 @@ export default {
         return json;
     },
     login: async (email, password) => {
-        const req = await fetch(`${BASE_API}/usuario/Authentication`, {
+        const req = await fetch(`${BACKEND_URL}/usuario/Authentication`, {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -30,7 +29,7 @@ export default {
         return json;
     },
     registrar: async (nome, email, senha) => {
-        const req = await fetch(`${BASE_API}/account/registrar`, {
+        const req = await fetch(`${BACKEND_URL}/account/registrar`, {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -45,7 +44,7 @@ export default {
         const token = await AsyncStorage.getItem('token');
         let userid = await AsyncStorage.getItem('usuarioId');
 
-        const req = await fetch(`${BASE_API}/inscricao/usuario/${userid}`, {
+        const req = await fetch(`${BACKEND_URL}/inscricao/usuario/${userid}`, {
             method: 'GET',
             headers: new Headers({
                       'Authorization': 'Bearer '+ token, 
@@ -57,7 +56,7 @@ export default {
     },
     logout: async () => {
         const token = await AsyncStorage.getItem('token');
-        const req = await fetch(`${BASE_API}/auth/logout`, {
+        const req = await fetch(`${BACKEND_URL}/auth/logout`, {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -70,7 +69,7 @@ export default {
     },
     pegarIncricao: async (id) => {
         const token = await AsyncStorage.getItem('token');
-        const req = await fetch(`${BASE_API}/inscricao/${id}`, { 
+        const req = await fetch(`${BACKEND_URL}/inscricao/${id}`, { 
             method: 'get', 
             headers: new Headers({
               'Authorization': 'Bearer '+ token, 
@@ -84,7 +83,7 @@ export default {
     pegarInfoPerfil: async () => {
         const token = await AsyncStorage.getItem('token');
         const userid = await AsyncStorage.getItem('usuarioId');
-        const req = await fetch(`${BASE_API}/usuario/${userid}`, { 
+        const req = await fetch(`${BACKEND_URL}/usuario/${userid}`, { 
             method: 'get', 
             headers: new Headers({
               'Authorization': 'Bearer '+ token, 

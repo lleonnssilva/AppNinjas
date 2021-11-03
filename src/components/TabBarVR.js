@@ -1,9 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components/native';
-import { UserContext } from '../contexts/UserContext';
 import IconeInscricao from '../assets/inscricoes.svg';
 import IconeHome from '../assets/home.svg';
-import IconeSistemas from '../assets/today.svg';
 import IconePerfil from '../assets/account.svg';
 
 
@@ -40,18 +38,12 @@ const IconeAvatar = styled.Image`
 `;
 
 export default ({ state, navigation }) => {
-    const { state:user } = useContext(UserContext);
-
-
     const goTo = (screenName) => {
-
         navigation.navigate(screenName);
     }
 
     return (
         <TabArea>
-           
-            
             <TabItem onPress={()=>goTo('Home')}>
                 <IconeHome style={{opacity: state.index===0? 1 : 0.5}} width="24" height="24" fill="#FFFFFF" />
            </TabItem>
@@ -59,9 +51,7 @@ export default ({ state, navigation }) => {
                 <IconeInscricao width="32" height="32" fill="#FFFFFF" />
             </TabItemCentro>
             <TabItem onPress={()=>goTo('Perfil')}>
-              
-                    <IconePerfil style={{opacity: state.index===4? 1 : 0.5}} width="24" height="24" fill="#FFFFFF" />
-            
+                <IconePerfil style={{opacity: state.index===4? 1 : 0.5}} width="24" height="24" fill="#FFFFFF" />
             </TabItem> 
         </TabArea>
     );
